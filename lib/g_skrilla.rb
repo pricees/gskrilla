@@ -1,19 +1,15 @@
-require "g_skrilla/version"
 require "open-uri"
 require 'mechanize'
 
 module GSkrilla
-  extend self
-
-  URL = "https://www.google.com/finance?fstype=ii&q="
-
-  def grab(symbol)
-    @doc = Nokogiri::HTML(open("#{URL}#{symbol}"))
-  end
-
-  def table_data(symbol)
-    grab(symbol).css("table.gf-table").map do |table|
-      table.children.text.split(/\n/).delete_if { |cell| cell.empty? }
-    end
+  def self.build(symbol)
+    Base.new(symbol)
   end
 end
+
+require_relative "g_skrilla/version"
+require_relative "g_skrilla/base.rb"
+require_relative "g_skrilla/financial_statement.rb"
+require_relative "g_skrilla/income_statement.rb"
+require_relative "g_skrilla/cash_flow.rb"
+require_relative "g_skrilla/balance_sheet.rb"

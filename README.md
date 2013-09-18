@@ -1,14 +1,14 @@
 # GSkrilla
 
-(1) Pull financial statements off Google financials
-(2) [investment strategy
-(3) Retire!
+1. Pull financial statements off Google financials
+2. Add your investment strategy
+3. Retire!
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'GSkrilla'
+    gem 'gskrilla'
 
 And then execute:
 
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install GSkrilla
+    $ gem install gskrilla
 
 ## Usage
 

@@ -1,11 +1,7 @@
 require_relative "../../lib/g_skrilla.rb"
 
-describe GSkrilla, "::grab" do
-
-  let(:symbol) { "OUTR" }
-
-  it "returns tables" do
-    expect(GSkrilla.table_data(symbol).length).to eq(6)
+describe GSkrilla, "#build" do
+  it "builds a base object" do
+    expect(GSkrilla::build("aapl").class).to eq(GSkrilla::Base)
   end
 end
-
