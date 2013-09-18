@@ -1,6 +1,8 @@
 # GSkrilla
 
-TODO: Write a gem description
+(1) Pull financial statements off Google financials
+(2) [investment strategy
+(3) Retire!
 
 ## Installation
 
