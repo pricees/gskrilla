@@ -20,6 +20,10 @@ Or install it yourself as:
 
 ## Usage
 
+g = GSkrilla::build "aapl" 
+
+g.income_statements["yr"].operating_income
+
 TODO: Write usage instructions here
 
 ## Contributing
