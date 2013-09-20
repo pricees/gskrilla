@@ -10,7 +10,7 @@ module GSkrilla
     def parse
       data.each_slice(6) do |row|
         title = row.shift.downcase.gsub(/[^a-z]/, " ").gsub(/\s+/, "_")
-        row.map! { |val| val.eql?("-") ? nil : val.to_f }
+        row.map! { |val| val.eql?("-") ? nil : val.gsub(/[^0-9\.]/, '').to_f }
         self.class.send(:define_method, title.to_sym, lambda { row })
       end
     end
