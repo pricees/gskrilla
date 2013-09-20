@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = GSkrilla::VERSION
   spec.authors       = ["Edward Price"]
   spec.email         = ["ted.price@gmail.com"]
-  spec.description   = %q{TODO: Scrape Google financial statements}
-  spec.summary       = %q{TODO: Scrape Google financial statements}
-  spec.homepage      = ""
+  spec.description   = %q{Scrape Google financial statements.  Assign them to income statments, cash flows and balance sheets.}
+  spec.summary       = %q{Scrape Google financial statements}
+  spec.homepage      = "https://github.com/pricees/gskrilla"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

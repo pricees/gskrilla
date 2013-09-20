@@ -24,12 +24,16 @@ module GSkrilla
     private 
 
     def set_statements
-      income_statements["qtr"] = IncomeStatement.new to_ary[0] 
-      income_statements["yr"]  = IncomeStatement.new to_ary[1]
-      cash_flows["qtr"] = CashFlow.new to_ary[2] 
-      cash_flows["yr"] =  CashFlow.new to_ary[3] 
-      balance_sheets["qtr"] = BalanceSheet.new to_ary[4] 
-      balance_sheets["yr"] =  BalanceSheet.new to_ary[5] 
+      income_statements["qtr"] = IncomeStatement.new(to_ary[0])
+      income_statements["yr"]  = IncomeStatement.new(to_ary[1])
+      cash_flows["qtr"]        = CashFlow.new(to_ary[2])
+      cash_flows["yr"]         = CashFlow.new(to_ary[3])
+      balance_sheets["qtr"]    = BalanceSheet.new(to_ary[4])
+      balance_sheets["yr"]     = BalanceSheet.new(to_ary[5])
+
+      income_statements.class.send(:include, HashExt)
+      cash_flows.class.send(:include, HashExt)
+      balance_sheets.class.send(:include, HashExt)
     end
 
     def to_ary
