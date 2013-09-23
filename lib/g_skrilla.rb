@@ -1,5 +1,5 @@
 require "open-uri"
-require 'mechanize'
+require "nokogiri"
 
 module GSkrilla
   def self.build(symbol)
