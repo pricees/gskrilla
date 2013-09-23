@@ -54,8 +54,8 @@ describe GSkrilla::Base do
       expect(yr).to_not be_nil
     end
 
-    it "has different income statements" do
-      expect(qtr.revenue).to_not eq(yr.revenue)
+    it "has different 'net change in cash'" do
+      expect(qtr.net_change_in_cash).to_not eq(yr.net_change_in_cash)
     end
   end
 

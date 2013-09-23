@@ -24,8 +24,8 @@ module GSkrilla
     private 
 
     def set_statements
-      income_statements["qtr"] = IncomeStatement.new(to_ary[0])
-      income_statements["yr"]  = IncomeStatement.new(to_ary[1])
+      income_statements["qtr"] = IncomeStatement.new(to_ary[0], :qtr)
+      income_statements["yr"]  = IncomeStatement.new(to_ary[1], :yr)
 
       balance_sheets["qtr"]    = BalanceSheet.new(to_ary[2])
       balance_sheets["yr"]     = BalanceSheet.new(to_ary[3])

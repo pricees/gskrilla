@@ -6,7 +6,7 @@ describe GSkrilla::FinancialStatement do
   end
 
   describe "#initalize" do
-    let(:financial_statement) { GSkrilla::FinancialStatement.new(ary) }
+    let(:financial_statement) { GSkrilla::FinancialStatement.new(ary, 6) }
 
     it "has dividends_per_share_common_stock_primary_issue" do
       res = financial_statement.dividends_per_share_common_stock_primary_issue

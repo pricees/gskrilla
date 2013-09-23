@@ -19,9 +19,13 @@ module GSkrilla
         title = label.downcase.gsub(/[^a-z]/, " ").gsub(/\s+/, "_")
         row.map! { |val| val.eql?("-") ? nil : val.gsub(/[^0-9\.]/, '').to_f }
 
-        data[title]          ||= row
-        method_lookup[title] ||= label
+        data[label]          ||= row
+        method_lookup[title.to_sym] ||= label
       end
+    end
+
+    def method_missing(meth, *args, &block)
+      data[method_lookup[meth]] || super
     end
   end
 end
