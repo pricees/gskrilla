@@ -1,17 +1,26 @@
 module GSkrilla
   class FinancialStatement
 
-    attr_reader :data
-    def initialize(data)
-      @data = data
-      parse
+    def initialize(raw_data, col_count)
+      hashify!(raw_data, col_count)
     end
 
-    def parse
-      data.each_slice(6) do |row|
-        title = row.shift.downcase.gsub(/[^a-z]/, " ").gsub(/\s+/, "_")
+    def data
+      @data ||= {}
+    end
+
+    def method_lookup
+      @method_lookup ||= {}
+    end
+
+    def hashify!(raw_data, col_count)
+      raw_data.each_slice(col_count) do |row|
+        label = row.shift
+        title = label.downcase.gsub(/[^a-z]/, " ").gsub(/\s+/, "_")
         row.map! { |val| val.eql?("-") ? nil : val.gsub(/[^0-9\.]/, '').to_f }
-        self.class.send(:define_method, title.to_sym, lambda { row })
+
+        data[title]          ||= row
+        method_lookup[title] ||= label
       end
     end
   end

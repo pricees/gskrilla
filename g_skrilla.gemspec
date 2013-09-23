@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'g_skrilla/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "GSkrilla"
+  spec.name          = "g_skrilla"
   spec.version       = GSkrilla::VERSION
   spec.authors       = ["Edward Price"]
   spec.email         = ["ted.price@gmail.com"]
