@@ -2,7 +2,8 @@ module GSkrilla
   class Base
     URL = "https://www.google.com/finance?fstype=ii&q="
 
-    attr_reader :doc, :income_statements, :cash_flows, :balance_sheets
+    attr_reader :doc, :income_statements, :cash_flows, 
+      :balance_sheets, :summary, :symbol
 
     def income_statements
       @income_statements ||= {}
@@ -17,13 +18,15 @@ module GSkrilla
     end
 
     def initialize(symbol)
-      @doc = Nokogiri::HTML(open("#{URL}#{symbol}"))
+      @symbol = symbol
+      @doc    = Nokogiri::HTML(open("#{URL}#{symbol}"))
       set_statements
     end
 
     private 
 
     def set_statements
+      @summary = Summary.new(symbol)
       income_statements["qtr"] = IncomeStatement.new(to_ary[0], :qtr)
       income_statements["yr"]  = IncomeStatement.new(to_ary[1], :yr)
 

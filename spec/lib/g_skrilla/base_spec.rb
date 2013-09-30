@@ -6,12 +6,22 @@ describe GSkrilla::Base do
   let(:input) { File.dirname(__FILE__) + "/../../web_data/#{symbol}.html" }
   let(:stream) { File.open(input) }
 
+  let(:summary) do 
+    file = File.dirname(__FILE__) + "/../../web_data/#{symbol}.html"
+    File.open file
+  end
+
   subject do
+    GSkrilla::Summary.stub(:open).and_return(summary)
     GSkrilla::Base.stub(:open).and_return(stream)
     GSkrilla::Base.new(symbol)
   end
 
   context "is initialized" do
+    it "has a summary" do
+      expect(subject.summary).to_not be_nil
+    end
+
     it "has 2 income statements" do
       expect(subject.income_statements.length).to eq(2)
     end
