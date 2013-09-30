@@ -27,8 +27,8 @@ module GSkrilla
       income_statements["qtr"] = IncomeStatement.new(to_ary[0], :qtr)
       income_statements["yr"]  = IncomeStatement.new(to_ary[1], :yr)
 
-      balance_sheets["qtr"]    = BalanceSheet.new(to_ary[2])
-      balance_sheets["yr"]     = BalanceSheet.new(to_ary[3])
+      balance_sheets["qtr"]    = BalanceSheet.new(to_ary[2], :qtr)
+      balance_sheets["yr"]     = BalanceSheet.new(to_ary[3], :yr)
 
       cash_flows["qtr"]        = CashFlow.new(to_ary[4])
       cash_flows["yr"]         = CashFlow.new(to_ary[5])
