@@ -4,9 +4,10 @@ describe GSkrilla::Summary do
 
   let(:symbol) { "aapl" }
   let(:input) { File.dirname(__FILE__) + "/../../web_data/#{symbol}_summary.html" }
-  let(:stream) { File.open(input) }
+  let!(:stream) { File.open(input) }
+
   subject do
-    GSkrilla::Summary.stub(:open).and_return(stream)
+    GSkrilla::Summary.any_instance.stub(:open).and_return(stream)
     GSkrilla::Summary.new(symbol)
   end
 
@@ -17,6 +18,10 @@ describe GSkrilla::Summary do
 
     it "has an eps ratio" do
       expect(subject.eps).to eq(40.04)
+    end
+
+    it "has a price" do
+      expect(subject.price).to eq(482.75)
     end
   end
 end

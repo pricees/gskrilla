@@ -19,6 +19,13 @@ module GSkrilla
       @pe ||= data["P/E"].to_f
     end
 
+    def price
+      attrs = doc.xpath("//meta[@itemprop='price']").first.attributes
+      attrs["content"].value.to_f
+    rescue 
+      0
+    end
+
     def eps
       @eps ||= data["EPS"].to_f
     end

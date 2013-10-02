@@ -12,8 +12,8 @@ describe GSkrilla::Base do
   end
 
   subject do
-    GSkrilla::Summary.stub(:open).and_return(summary)
-    GSkrilla::Base.stub(:open).and_return(stream)
+    GSkrilla::Summary.any_instance.stub(:open).and_return(summary)
+    GSkrilla::Base.any_instance.stub(:open).and_return(stream)
     GSkrilla::Base.new(symbol)
   end
 
