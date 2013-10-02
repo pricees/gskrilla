@@ -2,10 +2,11 @@ module GSkrilla
   class Summary
     URL = "https://www.google.com/finance?q="
 
-    attr_reader :doc, :data
+    attr_reader :doc, :data, :base
 
-    def initialize(symbol)
-      @doc = Nokogiri::HTML(open("#{URL}#{symbol}"))
+    def initialize(symbol, base)
+      @base = base
+      @doc = Nokogiri::HTML(base.stream)
       set_vals
     end
 

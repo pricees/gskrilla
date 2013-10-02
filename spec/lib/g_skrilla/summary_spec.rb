@@ -4,11 +4,10 @@ describe GSkrilla::Summary do
 
   let(:symbol) { "aapl" }
   let(:input) { File.dirname(__FILE__) + "/../../web_data/#{symbol}_summary.html" }
-  let!(:stream) { File.open(input) }
+  let!(:stream) { File.read(input) }
 
   subject do
-    GSkrilla::Summary.any_instance.stub(:open).and_return(stream)
-    GSkrilla::Summary.new(symbol)
+    GSkrilla::Summary.new(symbol, double(stream: stream))
   end
 
   context "is initialized" do

@@ -6,15 +6,15 @@ describe GSkrilla::Base do
   let(:input) { File.dirname(__FILE__) + "/../../web_data/#{symbol}.html" }
   let(:stream) { File.open(input) }
 
-  let(:summary) do 
-    file = File.dirname(__FILE__) + "/../../web_data/#{symbol}.html"
-    File.open file
-  end
-
   subject do
-    GSkrilla::Summary.any_instance.stub(:open).and_return(summary)
+    GSkrilla::Summary.any_instance.stub(:open).and_return(stream)
     GSkrilla::Base.any_instance.stub(:open).and_return(stream)
     GSkrilla::Base.new(symbol)
+  end
+
+  it "can accept a file" do
+    expect(GSkrilla::Base.new(symbol, input)).to_not be_nil
+
   end
 
   context "is initialized" do
