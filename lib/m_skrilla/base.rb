@@ -2,7 +2,7 @@ module MSkrilla
   class Base
 
     attr_reader :raw_data, :symbol
-    attr_reader :key_ratios
+    attr_reader :key_ratios, :summary
 
     def income_statements
       @income_statements ||= {}
@@ -33,6 +33,7 @@ module MSkrilla
 
     def load_statements
       @key_ratios = Document.new clean_data(read_file(:key_ratios, :all))
+      @summary    = Summary.new(symbol)
 
       @income_statements = {
         "qtr" => Document.new(clean_data(read_file(:income_statement, :qtr))),

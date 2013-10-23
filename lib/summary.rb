@@ -16,6 +16,7 @@ class Summary
       "Dividend Yield",
       "Price EPS Estimate Current Year",
       "Price EPS Estimate Next Year",
+      "Float Shares",
       "Percent Change From 52wk High",]
   end
 
@@ -31,6 +32,7 @@ class Summary
     end
   end
 
+  def float_shares; summary["Float Shares"].to_f end
   def ask_price; summary["Ask Price"].to_f end
   def average_daily_volume; summary["Average Daily Volume"].to_f end
   def one_yr_target_price; summary["One yr Target Price"].to_f end
