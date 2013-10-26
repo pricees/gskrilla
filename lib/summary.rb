@@ -27,8 +27,8 @@ class Summary
 
   def summary
     @summary ||= begin
-      res = Net::HTTP.get_response(URI(uri))
-      Hash[formats.zip(CSV.parse(res.body).first)]
+      data = Net::HTTP.get_response(URI(uri)).body
+      Hash[formats.zip(CSV.parse(data).first)]
     end
   end
 

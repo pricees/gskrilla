@@ -1,7 +1,13 @@
 require_relative "../../lib/m_skrilla.rb"
 
 describe "Summary" do
-  subject { Summary.new("aapl") }
+
+  subject do 
+    data = 7.times.map { rand(100).fdiv(100) }.to_csv
+    Net::HTTP.stub_chain(:get_response, :body).and_return data
+    Summary.new("aapl") 
+  end
+
 
   describe "#ask_price" do
     it "returns a value" do
