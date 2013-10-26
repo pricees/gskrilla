@@ -1,7 +1,6 @@
 require_relative "../../lib/m_skrilla.rb"
 
 describe "Summary" do
-
   subject { Summary.new("aapl") }
 
   describe "#ask_price" do
