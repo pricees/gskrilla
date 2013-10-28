@@ -41,6 +41,15 @@ class Summary
   def price_eps_estimate_next_year; summary["Price EPS Estimate Next Year"].to_f end
   def percent_change_from_52wk_high; summary["Percent Change From 52wk High"].to_f end
 
+  # NOTE: Total for now, for past shares amounts see key ratios
+  def total_common_shares_outstanding
+    float_shares
+  end
+
+  def price
+    ask_price
+  end
+
   private
 
   def uri

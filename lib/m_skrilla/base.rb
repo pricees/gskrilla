@@ -32,17 +32,17 @@ module MSkrilla
     end
 
     def load_statements
-      @key_ratios = Document.new clean_data(read_file(:key_ratios, :all))
+      @key_ratios = KeyRatios.new clean_data(read_file(:key_ratios, :all))
       @summary    = Summary.new(symbol)
 
       @income_statements = {
-        "qtr" => Document.new(clean_data(read_file(:income_statement, :qtr))),
-        "yr"  => Document.new(clean_data(read_file(:income_statement, :yr))),
+        "qtr" => IncomeStatement.new(clean_data(read_file(:income_statement, :qtr))),
+        "yr"  => IncomeStatement.new(clean_data(read_file(:income_statement, :yr))),
       }
 
       @balance_sheets = {
-        "qtr" => Document.new(clean_data(read_file(:balance_sheet, :qtr))),
-        "yr"  => Document.new(clean_data(read_file(:balance_sheet, :yr))),
+        "qtr" => BalanceSheet.new(clean_data(read_file(:balance_sheet, :qtr))),
+        "yr"  => BalanceSheet.new(clean_data(read_file(:balance_sheet, :yr))),
       }
 
       @cash_flows = {
