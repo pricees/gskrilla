@@ -28,7 +28,10 @@ module MSkrilla
     end
 
     def read_file(type, freq)
-      @raw_data = CSV.read("#{ENV["data_dir"]}/#{symbol}_#{type}.#{freq}.csv")
+      file = "#{ENV["data_dir"]}/#{symbol}_#{type}.#{freq}.csv"
+      @raw_data = CSV.read(file)
+    rescue
+      @raw_data = File.readlines(file).map { |line| line.chomp.split(/,/) }
     end
 
     def load_statements

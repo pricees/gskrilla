@@ -51,7 +51,9 @@ module MSkrilla
     # like "long-term debt" for Aapl
     #
     def try(symbol)
-      respond_to?(symbol) ? send(symbol) : Array.new(5, 0.0)
+      send(symbol) 
+    rescue NoMethodError
+      Array.new(5, 0.0)
     end
   end
 end
